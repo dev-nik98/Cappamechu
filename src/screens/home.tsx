@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 
-import {Image, TextInput} from 'react-native';
+import {Image, ImageBackground, TextInput} from 'react-native';
 import {StyleSheet, View, Text} from 'react-native';
 
 import SplashScreen from 'react-native-splash-screen';
@@ -19,7 +19,22 @@ const home = () => {
       <View style={styles.container}>
         <View style={styles.secondView}></View>
 
+        <View style={{backgroundColor: 'white'}}></View>
+        <View style={{backgroundColor: 'white', alignItems: 'center'}}>
+          <ImageBackground
+            source={require('../../assets/image_buy.png')}
+            style={styles.buyOneImage}>
+            <View style={styles.rectangle}>
+              <Text style={styles.imageBackgroundText}>one free </Text>
+            </View>
+            <View style={styles.rectangle2}>
+              <Text style={styles.imageBackgroundText}> Buy one get</Text>
+            </View>
+          </ImageBackground>
+        </View>
+
         <View style={styles.thrdView} />
+
         <View style={styles.transView}>
           <View
             style={{
@@ -73,6 +88,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  rectangle: {
+    width: 149,
+    height: 43,
+    top: 90,
+    backgroundColor: '#1C1C1C',
+    position: 'absolute',
+  },
+  rectangle2: {
+    width: 149,
+    height: 33,
+    top: 50,
+    backgroundColor: '#1C1C1C',
+    position: 'absolute',
+  },
+  imageBackgroundText: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'semibold',
+    backgroundColor: 'black',
+    alignSelf: 'flex-start',
+    borderRadius: 0.5,
+    padding: 0.5,
+  },
   filterIcon: {
     backgroundColor: '#C67C4E',
     height: 24,
@@ -80,6 +118,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 4,
+  },
+  buyOneImage: {
+    height: 140,
+    width: 315,
+    position: 'static',
+    top: -50,
   },
   searchCoffeeView: {
     color: '313131',
@@ -121,7 +165,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   secondView: {
-    flex: 1,
+    flex: 1.2,
     backgroundColor: 'black',
   },
 
