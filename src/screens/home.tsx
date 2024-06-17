@@ -424,7 +424,7 @@ const styles = StyleSheet.create({
   },
   locationView: {
     height: 50,
-    width: constants.SCREEN_WIDTH,
+   
   },
   rowView: {
     flexDirection: 'row',
