@@ -1,28 +1,21 @@
 import React,{useEffect,useState} from 'react';
-import {View, Text, StyleSheet, Alert,TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet,TouchableOpacity} from 'react-native';
 
 const Timer = () => {
-    const [seconds, setSeconds] = useState(60); 
+    const [seconds, setSeconds] = useState(0); 
     const [isRunning, setIsRunning] = useState(false);
   
     useEffect(() => {
       let interval = null;
       if (isRunning) {
         interval = setInterval(() => {
-          setSeconds((prevSeconds) => {
-            if (prevSeconds > 0) {
-              return prevSeconds - 1;
-            } else {
-              clearInterval(interval);
-              return 0;
-            }
-          });
-        }, 1000);
-      } else if (!isRunning && seconds !== 0) {
+          setSeconds(prevSeconds => prevSeconds + 1) 
+        }, 1000)
+      } else  {
         clearInterval(interval);
       }
       return () => clearInterval(interval);
-    }, [isRunning, seconds]);
+    }, [isRunning]);
   
 
 
@@ -31,23 +24,20 @@ const Timer = () => {
 
     const startTimer = () => {
         setIsRunning(true);
+       
       };
-      const pauseTimer = () => {
-        setIsRunning(false);
-      };
+      
       const resetTimer = () => {
         setIsRunning(false);
-        setSeconds(60);
+        setSeconds(0);
       };
   return (
     <View style={{padding:10,flex :1}}>
-        <Text style={styles.timerText}>{seconds} seconds</Text>
+        <Text style={styles.timerText}>{seconds}</Text>
       <TouchableOpacity style={styles.startButton} onPress={startTimer}>
         <Text style={styles.startButtonText}>Start</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.pauseButton} onPress={pauseTimer}>
-        <Text style={styles.pauseButtonText}>Pause</Text>
-      </TouchableOpacity>
+      
       <TouchableOpacity style={styles.resetButton} onPress={resetTimer}>
         <Text style={styles.resetButtonText}>Reset</Text>
       </TouchableOpacity>
@@ -69,15 +59,7 @@ const styles = StyleSheet.create({
 marginBottom:10,
     borderRadius: 10,
   },
- pauseButton: {
-    width:100,
-    backgroundColor: 'red',
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    marginBottom:10,
-
-    borderRadius: 10,
-  },
+ 
  resetButton: {
     width:100,
     backgroundColor: 'blue',
@@ -90,10 +72,7 @@ marginBottom:10,
     color: '#FFFFFF',
     fontSize: 18,
   },
- pauseButtonText: {
-    color: '#FFFFFF',
-    fontSize: 18,
-  },
+ 
   resetButtonText: {
     color: '#FFFFFF',
     fontSize: 18,

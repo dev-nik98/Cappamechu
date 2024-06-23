@@ -7,8 +7,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {StyleSheet, Button, FlatList, View, Text} from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
-import {constants} from '../utils/constants';
 
 const products = [
   {
@@ -124,12 +122,7 @@ const flatListproducts = [
 ];
 
 const Home = () => {
-  useEffect(() => {
-    SplashScreen.hide();
-    return () => {
-      SplashScreen.hide();
-    };
-  }, []);
+  
 
   const [selectedId, setSelectedId] = useState(null);
 

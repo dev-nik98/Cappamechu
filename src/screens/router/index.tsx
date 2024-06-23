@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../home';
 import Orders from '../orders';
 import StackNav from './stackNav';
-import timer from '../router/timer'
+import Camera from '../router/newCamera'
 import { Image } from 'react-native';
 
 const Tab = createBottomTabNavigator();
@@ -33,7 +33,7 @@ const Routes = () => {
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Orders" component={Orders} />
         <Tab.Screen name="StackNavi" options={{headerShown:false}} component={StackNav} />
-        <Tab.Screen name="Timer" component={timer} />
+        <Tab.Screen name="Camera" component={Camera} />
       </Tab.Navigator>
     </NavigationContainer>
   );
